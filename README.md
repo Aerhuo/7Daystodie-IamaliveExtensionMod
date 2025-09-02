@@ -1,2 +1,3 @@
-# 7Daystodie-IamaliveExtensionMod
-七日杀我还活着模组扩展模组
+# 七日杀我还活着模组扩展模组
+
+增加了部分技能。
