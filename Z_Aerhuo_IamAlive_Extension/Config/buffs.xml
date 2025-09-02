@@ -1,0 +1,158 @@
+<config>
+    <append xpath="/buffs">
+
+        <!-- 玩家身上的追踪、计数、计时、增伤一体化Buff -->
+        <buff name="buffMarkOfDeathTracker" name_key="buffMarkOfDeathTrackerName" description_key="buffMarkOfDeathTrackerDesc" icon="ui_game_symbol_skull" icon_color="0,255,0">
+            <stack_type value="replace"/>
+            <!-- 修改：持续时间变为3秒 -->
+            <duration value="3"/>
+            <display_value value="playerMarkCounter"/>
+            <display_value_key value="buffMarkOfDeathTrackerValue"/>
+
+            <!-- 步骤1: 通用的叠层逻辑 -->
+            <effect_group>
+                <!-- 修改：上限变为20层 -->
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="playerMarkCounter" operation="add" value="1">
+                    <requirement name="CVarCompare" cvar="playerMarkCounter" operation="LT" value="20"/>
+                </triggered_effect>
+                <triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="playerMarkCounter" operation="add" value="1">
+                    <requirement name="CVarCompare" cvar="playerMarkCounter" operation="LT" value="20"/>
+                </triggered_effect>
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="playerMarkCounter" operation="set" value="1">
+                    <requirement name="CVarCompare" cvar="playerMarkCounter" operation="Equals" value="0"/>
+                </triggered_effect>
+                <triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="playerMarkCounter" operation="set" value="1">
+                    <requirement name="CVarCompare" cvar="playerMarkCounter" operation="Equals" value="0"/>
+                </triggered_effect>
+            </effect_group>
+
+            <!-- 步骤2: 根据技能等级，选择不同的伤害倍率进行计算 -->
+            <!-- 等级1: 每层 1% -->
+            <effect_group>
+                <requirement name="ProgressionLevel" progression_name="perkMarkOfDeath" operation="Equals" value="1"/>
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="playerDamageBonus" operation="set" value="@playerMarkCounter"/>
+                <triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="playerDamageBonus" operation="set" value="@playerMarkCounter"/>
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="playerDamageBonus" operation="multiply" value="0.01"/>
+                <triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="playerDamageBonus" operation="multiply" value="0.01"/>
+            </effect_group>
+            <!-- 等级2: 每层 1.5% -->
+            <effect_group>
+                <requirement name="ProgressionLevel" progression_name="perkMarkOfDeath" operation="Equals" value="2"/>
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="playerDamageBonus" operation="set" value="@playerMarkCounter"/>
+                <triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="playerDamageBonus" operation="set" value="@playerMarkCounter"/>
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="playerDamageBonus" operation="multiply" value="0.015"/>
+                <triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="playerDamageBonus" operation="multiply" value="0.015"/>
+            </effect_group>
+            <!-- 等级3: 每层 2% -->
+            <effect_group>
+                <requirement name="ProgressionLevel" progression_name="perkMarkOfDeath" operation="Equals" value="3"/>
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="playerDamageBonus" operation="set" value="@playerMarkCounter"/>
+                <triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="playerDamageBonus" operation="set" value="@playerMarkCounter"/>
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="playerDamageBonus" operation="multiply" value="0.02"/>
+                <triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="playerDamageBonus" operation="multiply" value="0.02"/>
+            </effect_group>
+            <!-- 等级4: 每层 2.5% -->
+            <effect_group>
+                <requirement name="ProgressionLevel" progression_name="perkMarkOfDeath" operation="Equals" value="4"/>
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="playerDamageBonus" operation="set" value="@playerMarkCounter"/>
+                <triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="playerDamageBonus" operation="set" value="@playerMarkCounter"/>
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="playerDamageBonus" operation="multiply" value="0.025"/>
+                <triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="playerDamageBonus" operation="multiply" value="0.025"/>
+            </effect_group>
+            <!-- 等级5: 每层 3% -->
+            <effect_group>
+                <requirement name="ProgressionLevel" progression_name="perkMarkOfDeath" operation="Equals" value="5"/>
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="playerDamageBonus" operation="set" value="@playerMarkCounter"/>
+                <triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="playerDamageBonus" operation="set" value="@playerMarkCounter"/>
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="playerDamageBonus" operation="multiply" value="0.03"/>
+                <triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="playerDamageBonus" operation="multiply" value="0.03"/>
+            </effect_group>
+
+            <!-- 步骤3: 通用的伤害加成应用和清理逻辑 -->
+            <effect_group>
+                <passive_effect name="DamageModifier" operation="perc_add" value="@playerDamageBonus"/>
+                <triggered_effect trigger="onSelfBuffFinish" action="RemoveCVar" cvar="playerMarkCounter,playerDamageBonus"/>
+            </effect_group>
+        </buff>
+
+        <!-- 破甲：敌人Debuff (共5级) -->
+        <!-- 敌人Debuff (等级 1): 降低30%物理抗性。 -->
+        <buff name="buffArmorShredded_L1" name_key="buffArmorShreddedName" description_key="buffArmorShreddedDesc_L1" icon="ui_game_symbol_armor_iron" icon_color="255,0,0">
+            <stack_type value="replace"/>
+            <duration value="0"/>
+            <effect_group>
+                <passive_effect name="PhysicalDamageResist" operation="perc_subtract" value=".30"/>
+            </effect_group>
+        </buff>
+
+        <!-- 敌人Debuff (等级 2): 降低40%物理抗性。 -->
+        <buff name="buffArmorShredded_L2" name_key="buffArmorShreddedName" description_key="buffArmorShreddedDesc_L2" icon="ui_game_symbol_armor_iron" icon_color="255,0,0">
+            <stack_type value="replace"/>
+            <duration value="0"/>
+            <effect_group>
+                <passive_effect name="PhysicalDamageResist" operation="perc_subtract" value=".40"/>
+            </effect_group>
+        </buff>
+
+        <!-- 敌人Debuff (等级 3): 降低50%物理抗性。 -->
+        <buff name="buffArmorShredded_L3" name_key="buffArmorShreddedName" description_key="buffArmorShreddedDesc_L3" icon="ui_game_symbol_armor_iron" icon_color="255,0,0">
+            <stack_type value="replace"/>
+            <duration value="0"/>
+            <effect_group>
+                <passive_effect name="PhysicalDamageResist" operation="perc_subtract" value=".50"/>
+            </effect_group>
+        </buff>
+
+        <!-- 敌人Debuff (等级 4): 降低60%物理抗性。 -->
+        <buff name="buffArmorShredded_L4" name_key="buffArmorShreddedName" description_key="buffArmorShreddedDesc_L4" icon="ui_game_symbol_armor_iron" icon_color="255,0,0">
+            <stack_type value="replace"/>
+            <duration value="0"/>
+            <effect_group>
+                <passive_effect name="PhysicalDamageResist" operation="perc_subtract" value=".60"/>
+            </effect_group>
+        </buff>
+
+        <!-- 敌人Debuff (等级 5): 降低70%物理抗性。 -->
+        <buff name="buffArmorShredded_L5" name_key="buffArmorShreddedName" description_key="buffArmorShreddedDesc_L5" icon="ui_game_symbol_armor_iron" icon_color="255,0,0">
+            <stack_type value="replace"/>
+            <duration value="0"/>
+            <effect_group>
+                <passive_effect name="PhysicalDamageResist" operation="perc_subtract" value=".70"/>
+            </effect_group>
+        </buff>
+
+        <!-- 破甲：玩家Buff -->
+        <buff name="buffArmorBreakerReady" name_key="buffArmorBreakerReadyName" description_key="buffArmorBreakerReadyDesc" icon="ui_game_symbol_destruction2" icon_color="0,255,0">
+            <stack_type value="ignore"/>
+            <duration value="0"/>
+        </buff>
+
+        <buff name="buffArmorBreakerCooldown" name_key="buffArmorBreakerCooldownName" description_key="buffArmorBreakerCooldownDesc" icon="ui_game_symbol_destruction2" icon_color="128,128,128">
+            <stack_type value="replace"/>
+            <duration value="0"/>
+            <update_rate value="1"/>
+            <display_value value=".cooldownDisplay"/>
+            <display_value_format value="time"/>
+
+            <effect_group>
+                <!-- Buff开始时，将内部计时器设置为由Perk设定的冷却时间 -->
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".cooldownTimer" operation="set" value="@.armorBreakerCooldownTime"/>
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".cooldownDisplay" operation="set" value="@.armorBreakerCooldownTime"/>
+
+                <!-- 每秒更新计时器 -->
+                <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".cooldownTimer" operation="subtract" value="1"/>
+                <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".cooldownDisplay" operation="subtract" value="1"/>
+
+                <!-- 计时结束后移除自身 -->
+                <triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffArmorBreakerCooldown">
+                    <requirement name="CVarCompare" cvar=".cooldownTimer" operation="LTE" value="0"/>
+                </triggered_effect>
+
+                <!-- 冷却结束后，给予准备就绪Buff -->
+                <triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffArmorBreakerReady"/>
+                <triggered_effect trigger="onSelfBuffRemove" action="RemoveCVar" cvar=".cooldownTimer,.cooldownDisplay,.armorBreakerCooldownTime"/>
+            </effect_group>
+        </buff>
+
+    </append>
+</config>

@@ -1,0 +1,19 @@
+<configs>
+    <append xpath="/items">
+        <item name="debugStick">
+            <property name="Extends" value="meleeWpnClubT0WoodenClub"/>
+            <property name="DisplayType" value="melee"/>
+            <property name="CreativeMode" value="Dev"/>
+            <property class="Action1">
+                <property name="Class" value="DynamicMelee"/>
+                <property name="Damage_type" value="Slashing"/>
+                <property name="Sphere" value=".1"/>
+                <property name="Tool_category" value="Debug"/>
+            </property>
+            <effect_group name="Debug Stick Actions">
+                <!-- 当你用这个物品右键（副攻击）击中一个实体时 -->
+                <triggered_effect trigger="onSelfSecondaryActionRayHit" action="ShowToolTipSDX, SCore" target="self" message="敌人层数: {cvar(other,$markOfDeathCounter)} | 总增伤: {cvar(other,$totalMarkDamage)}%" />
+            </effect_group>
+        </item>
+    </append>
+</configs>
