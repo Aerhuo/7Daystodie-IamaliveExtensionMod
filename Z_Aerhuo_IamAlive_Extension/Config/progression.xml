@@ -185,31 +185,6 @@
         <!-- 技能: 粉碎打击 -->
         <perk name="perkArmorBreaker" parent="skillStrengthCombat" max_level="5" name_key="perkArmorBreakerName" desc_key="perkArmorBreakerDesc" icon="ui_game_symbol_destruction2">
 
-            <!-- 等级1: 消耗 1 技能点 -->
-            <level_requirements level="1" skill_point_cost="1">
-                <requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="1" desc_key="reqStrengthLevel01"/>
-            </level_requirements>
-
-            <!-- 等级2: 消耗 2 技能点 -->
-            <level_requirements level="2" skill_point_cost="2">
-                <requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="3" desc_key="reqStrengthLevel03"/>
-            </level_requirements>
-
-            <!-- 等级3: 消耗 3 技能点 -->
-            <level_requirements level="3" skill_point_cost="3">
-                <requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="5" desc_key="reqStrengthLevel05"/>
-            </level_requirements>
-
-            <!-- 等级4: 消耗 4 技能点 -->
-            <level_requirements level="4" skill_point_cost="4">
-                <requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="7" desc_key="reqStrengthLevel07"/>
-            </level_requirements>
-
-            <!-- 等级5: 消耗 5 技能点 -->
-            <level_requirements level="5" skill_point_cost="5">
-                <requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="10" desc_key="reqStrengthLevel10"/>
-            </level_requirements>
-
             <!-- 核心逻辑：只有学习了此技能，以下所有效果才会生效 -->
             <effect_group>
                 <requirement name="ProgressionLevel" progression_name="perkArmorBreaker" operation="GTE" value="1"/>
