@@ -1,2 +1,3 @@
-# 7Daystodie-IamaliveExtensionMod
-七日杀我还活着模组扩展模组
+# 七日杀我还活着拓展模组-原版适配版
+
+用于调试修改内容的测试版。
