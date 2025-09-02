@@ -11,7 +11,7 @@ perkMarkOfDeathRank4Desc,,,,"[FF4500]索命者[-]"
 perkMarkOfDeathRank4LongDesc_V3,,,,你的印记已深深刻入敌人灵魂。每次攻击有 [FFFF00]50%[-] 的几率叠加一层死亡标记，每层使你造成的伤害增加 [00FF00]2.5%[-]，最多叠加 [FFFF00]20[-] 层，持续 [FFFF00]3[-] 秒。
 perkMarkOfDeathRank5Desc,,,,"[8B0000]死神化身[-]"
 perkMarkOfDeathRank5LongDesc_V3,,,,你已成为死亡的化身。每次攻击有 [FFFF00]50%[-] 的几率叠加一层死亡标记，每层使你造成的伤害增加 [00FF00]3%[-]，最多叠加 [FFFF00]20[-] 层，持续 [FFFF00]3[-] 秒。满层时总伤害增加 [00FF00]60%[-]！
-buffMarkOfDeathTrackerName,,,,"[FF6347]标记{0}/20层"
+buffMarkOfDeathTrackerName,,,,"[FF6347]标记"
 buffMarkOfDeathTrackerDesc,,,,你当前的死亡标记连击层数。层数越高，你造成的伤害越大。停止攻击3秒后连击会中断。
 buffMarkOfDeathTrackerValue,,,,"[FF6347]标记{0}/20层"
 perkKnifeCrazyName,,,,"[FF4500]疯魔刀法"
