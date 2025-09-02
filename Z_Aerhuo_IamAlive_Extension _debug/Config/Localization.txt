@@ -1,0 +1,51 @@
+Key,Source,Context,Changes,schinese
+perkMarkOfDeathName,,,,"[FF6347]死亡标记"
+perkMarkOfDeathDesc,,,,通过连续攻击标记敌人，让你越战越勇。
+perkMarkOfDeathRank1Desc,,,,"[FFFF00]追迹者[-]"
+perkMarkOfDeathRank1LongDesc_V3,,,,作为一名追迹者，你学会了如何标记猎物。每次攻击有 [FFFF00]50%[-] 的几率叠加一层死亡标记，每层使你造成的伤害增加 [00FF00]1%[-]，最多叠加 [FFFF00]20[-] 层，持续 [FFFF00]3[-] 秒。
+perkMarkOfDeathRank2Desc,,,,"[FFD700]狩猎者[-]"
+perkMarkOfDeathRank2LongDesc_V3,,,,你对猎物的弱点洞若观火。每次攻击有 [FFFF00]50%[-] 的几率叠加一层死亡标记，每层使你造成的伤害增加 [00FF00]1.5%[-]，最多叠加 [FFFF00]20[-] 层，持续 [FFFF00]3[-] 秒。
+perkMarkOfDeathRank3Desc,,,,"[FFA500]处刑人[-]"
+perkMarkOfDeathRank3LongDesc_V3,,,,你挥出的每一击都带着处决的意味。每次攻击有 [FFFF00]50%[-] 的几率叠加一层死亡标记，每层使你造成的伤害增加 [00FF00]2%[-]，最多叠加 [FFFF00]20[-] 层，持续 [FFFF00]3[-] 秒。
+perkMarkOfDeathRank4Desc,,,,"[FF4500]索命者[-]"
+perkMarkOfDeathRank4LongDesc_V3,,,,你的印记已深深刻入敌人灵魂。每次攻击有 [FFFF00]50%[-] 的几率叠加一层死亡标记，每层使你造成的伤害增加 [00FF00]2.5%[-]，最多叠加 [FFFF00]20[-] 层，持续 [FFFF00]3[-] 秒。
+perkMarkOfDeathRank5Desc,,,,"[8B0000]死神化身[-]"
+perkMarkOfDeathRank5LongDesc_V3,,,,你已成为死亡的化身。每次攻击有 [FFFF00]50%[-] 的几率叠加一层死亡标记，每层使你造成的伤害增加 [00FF00]3%[-]，最多叠加 [FFFF00]20[-] 层，持续 [FFFF00]3[-] 秒。满层时总伤害增加 [00FF00]60%[-]！
+buffMarkOfDeathTrackerName,,,,"[FF6347]标记{0}/20层"
+buffMarkOfDeathTrackerDesc,,,,你当前的死亡标记连击层数。层数越高，你造成的伤害越大。停止攻击3秒后连击会中断。
+buffMarkOfDeathTrackerValue,,,,"[FF6347]标记{0}/20层"
+perkKnifeCrazyName,,,,"[FF4500]疯魔刀法"
+perkKnifeCrazyDesc,,,,在生死边缘徘徊，释放你最强大的力量。生命值越低，刀刃伤害越高。
+perkKnifeCrazyRank1Desc,,,,"[FFFF00]初窥门径的疯魔[-]"
+perkKnifeCrazyRank1LongDesc,,,,你领悟了置之死地而后生的刀法。你的生命值每降低 [FFFF00]15%[-] ，刀刃武器造成的伤害就会提高一个档次。当前等级下，生命值低于10%时可获得最高 [00FF00]40%[-] 的伤害加成。
+perkKnifeCrazyRank2Desc,,,,"[FFD700]嗜血的狂徒[-]"
+perkKnifeCrazyRank2LongDesc,,,,鲜血的气味让你更加兴奋。你的生命值每降低 [FFFF00]15%[-] ，刀刃武器造成的伤害就会提高一个档次。当前等级下，生命值低于10%时可获得最高 [00FF00]45%[-] 的伤害加成。
+perkKnifeCrazyRank3Desc,,,,"[FFA500]身陷绝境的斗士[-]"
+perkKnifeCrazyRank3LongDesc,,,,越是危险的境地，越能激发你的潜能。你的生命值每降低 [FFFF00]15%[-] ，刀刃武器造成的伤害就会提高一个档次。当前等级下，生命值低于10%时可获得最高 [00FF00]50%[-] 的伤害加成。
+perkKnifeCrazyRank4Desc,,,,"[FF4500]浴血的修罗[-]"
+perkKnifeCrazyRank4LongDesc,,,,你在刀光血影中化身修罗。你的生命值每降低 [FFFF00]15%[-] ，刀刃武器造成的伤害就会提高一个档次。当前等级下，生命值低于10%时可获得最高 [00FF00]55%[-] 的伤害加成。
+perkKnifeCrazyRank5Desc,,,,"[8B0000]疯魔之主[-]"
+perkKnifeCrazyRank5LongDesc,,,,你完全掌控了这股疯狂的力量。你的生命值每降低 [FFFF00]15%[-] ，刀刃武器造成的伤害就会提高一个档次。当前等级下，生命值低于10%时可获得最高 [00FF00]60%[-] 的伤害加成！
+debugStick,,,,调试棒
+perkArmorBreakerName,,,,[c82222]粉碎打击[-]
+perkArmorBreakerDesc,,,,瞄准敌人的结构弱点，一击摧毁其防御。
+perkArmorBreakerRank1Desc,,,,[FFFF00]先锋[-]
+perkArmorBreakerRank1LongDesc,,,,你冲锋在前，为战友撕开敌人的防线。你的下一次攻击将永久降低目标 [ff0000]30%[-] 的物理抗性。该技能有 [ffd800]60秒[-] 冷却时间。
+perkArmorBreakerRank2Desc,,,,[FFD700]破阵者[-]
+perkArmorBreakerRank2LongDesc,,,,你深谙如何瓦解敌人的阵型，每一次打击都精准无比。你的下一次攻击将永久降低目标 [ff0000]40%[-] 的物理抗性。该技能有 [ffd800]55秒[-] 冷却时间。
+perkArmorBreakerRank3Desc,,,,[FFA500]碎盾者[-]
+perkArmorBreakerRank3LongDesc,,,,再坚固的盾牌在你面前也形同虚设。你的下一次攻击将永久降低目标 [ff0000]50%[-] 的物理抗性。该技能有 [ffd800]49秒[-] 冷却时间。
+perkArmorBreakerRank4Desc,,,,[FF4500]攻城大师[-]
+perkArmorBreakerRank4LongDesc,,,,你的打击堪比攻城武器，能撼动最坚固的堡垒。你的下一次攻击将永久降低目标 [ff0000]60%[-] 的物理抗性。该技能有 [ffd800]42秒[-] 冷却时间。
+perkArmorBreakerRank5Desc,,,,[8B0000]人形攻城锤[-]
+perkArmorBreakerRank5LongDesc,,,,你就是活生生的攻城锤，任何防御都将被你碾碎。你的下一次攻击将永久降低目标 [ff0000]70%[-] 的物理抗性。该技能有 [ffd800]34秒[-] 冷却时间。
+buffArmorShreddedName,,,,[c82222]结构性崩坏[-]
+buffArmorShreddedDesc_L1,,,,目标的物理防御被永久削弱了 [ff0000]30%[-] 。
+buffArmorShreddedDesc_L2,,,,目标的物理防御被永久削弱了 [ff0000]40%[-] 。
+buffArmorShreddedDesc_L3,,,,目标的物理防御被永久削弱了 [ff0000]50%[-] 。
+buffArmorShreddedDesc_L4,,,,目标的物理防御被永久削弱了 [ff0000]60%[-] 。
+buffArmorShreddedDesc_L5,,,,目标的物理防御被永久削弱了 [ff0000]70%[-] 。
+buffArmorBreakerReadyName,,,,[00ff00]粉碎打击：就绪[-]
+buffArmorBreakerReadyDesc,,,,你的下一次攻击将引发[c82222]结构性崩坏[-]。
+buffArmorBreakerCooldownName,,,,[999999]粉碎打击：蓄力中[-]
+buffArmorBreakerCooldownDesc,,,,你正在为下一次毁灭性的打击积蓄力量。

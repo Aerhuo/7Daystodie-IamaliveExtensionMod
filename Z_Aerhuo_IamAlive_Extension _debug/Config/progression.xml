@@ -1,0 +1,290 @@
+<config>
+    <remove xpath="/progression/perks/perk[@name='perkKnifeCrazy']"/>
+    <append xpath="/progression/perks">
+
+        <perk name="perkMarkOfDeath" parent="skillAgilityCombat" max_level="5" skill_point_cost="2" cost_multiplier_per_level="1" name_key="perkMarkOfDeathName" desc_key="perkMarkOfDeathDesc" icon="ui_game_symbol_stealth2">
+            <level_requirements level="1">
+                <requirement name="ProgressionLevel" progression_name="attAgility" operation="GTE" value="3" desc_key="需要[00c101]敏捷[00FF00]3[FFFFFF]级 | 花费[00FF00]2[FFFFFF]技能点"/>
+            </level_requirements>
+            <level_requirements level="2">
+                <requirement name="ProgressionLevel" progression_name="attAgility" operation="GTE" value="5" desc_key="需要[00c101]敏捷[00FF00]5[FFFFFF]级 | 花费[00FF00]2[FFFFFF]技能点"/>
+            </level_requirements>
+            <level_requirements level="3">
+                <requirement name="ProgressionLevel" progression_name="attAgility" operation="GTE" value="7" desc_key="需要[00c101]敏捷[00FF00]7[FFFFFF]级 | 花费[00FF00]2[FFFFFF]技能点"/>
+            </level_requirements>
+            <level_requirements level="4">
+                <requirement name="ProgressionLevel" progression_name="attAgility" operation="GTE" value="9" desc_key="需要[00c101]敏捷[00FF00]9[FFFFFF]级 | 花费[00FF00]2[FFFFFF]技能点"/>
+            </level_requirements>
+            <level_requirements level="5">
+                <requirement name="ProgressionLevel" progression_name="attAgility" operation="GTE" value="10" desc_key="需要[00c101]敏捷[00FF00]10[FFFFFF]级 | 花费[00FF00]2[FFFFFF]技能点"/>
+            </level_requirements>
+
+            <effect_group>
+                <requirement name="ProgressionLevel" progression_name="perkMarkOfDeath" operation="GTE" value="1"/>
+                <!-- 每次攻击命中时，有50%几率给玩家自己添加/刷新buff -->
+                <triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="self" buff="buffMarkOfDeathTracker">
+                    <requirement name="IsAlive" target="other"/>
+                    <requirement name="EntityTagCompare" target="other" tags="zombie,animal,hostile"/>
+                    <!-- 新增：50%几率触发 -->
+                    <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/>
+                </triggered_effect>
+
+                <effect_description level="1" desc_key="perkMarkOfDeathRank1Desc" long_desc_key="perkMarkOfDeathRank1LongDesc_V3"/>
+                <effect_description level="2" desc_key="perkMarkOfDeathRank2Desc" long_desc_key="perkMarkOfDeathRank2LongDesc_V3"/>
+                <effect_description level="3" desc_key="perkMarkOfDeathRank3Desc" long_desc_key="perkMarkOfDeathRank3LongDesc_V3"/>
+                <effect_description level="4" desc_key="perkMarkOfDeathRank4Desc" long_desc_key="perkMarkOfDeathRank4LongDesc_V3"/>
+                <effect_description level="5" desc_key="perkMarkOfDeathRank5Desc" long_desc_key="perkMarkOfDeathRank5LongDesc_V3"/>
+            </effect_group>
+        </perk>
+
+        <perk name="perkKnifeCrazy" parent="skillStrengthCombat" max_level="5" skill_point_cost="2" cost_multiplier_per_level="1" name_key="perkKnifeCrazyName" desc_key="perkKnifeCrazyDesc" icon="whhz_crazy">
+            <level_requirements level="1">
+                <requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="1" desc_key="需要[EF4136]力量[00FF00]1[FFFFFF]级"/>
+            </level_requirements>
+            <level_requirements level="2">
+                <requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="3" desc_key="需要[EF4136]力量[00FF00]3[FFFFFF]级"/>
+            </level_requirements>
+            <level_requirements level="3">
+                <requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="5" desc_key="需要[EF4136]力量[00FF00]5[FFFFFF]级"/>
+            </level_requirements>
+            <level_requirements level="4">
+                <requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="7" desc_key="需要[EF4136]力量[00FF00]7[FFFFFF]级"/>
+            </level_requirements>
+            <level_requirements level="5">
+                <requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="10" desc_key="需要[EF4136]力量[00FF00]10[FFFFFF]级"/>
+            </level_requirements>
+
+            <!-- 等级 1: 每阶段 6.67% 伤害, 最高 40% -->
+            <effect_group>
+                <requirement name="ProgressionLevel" progression_name="perkKnifeCrazy" operation="Equals" value="1"/>
+                <requirements compare_type="or">
+                    <requirement name="HoldingItemHasTags" tags="perkKnife"/>
+                    <requirement name="HoldingItemHasTags" tags="perkDeepCuts"/>
+                </requirements>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.0667">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".85"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.0667">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".70"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.0667">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".55"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.0667">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".40"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.0667">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".25"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.0667">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".10"/>
+                </passive_effect>
+            </effect_group>
+
+            <!-- 等级 2: 每阶段 7.5% 伤害, 最高 45% -->
+            <effect_group>
+                <requirement name="ProgressionLevel" progression_name="perkKnifeCrazy" operation="Equals" value="2"/>
+                <requirements compare_type="or">
+                    <requirement name="HoldingItemHasTags" tags="perkKnife"/>
+                    <requirement name="HoldingItemHasTags" tags="perkDeepCuts"/>
+                </requirements>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.075">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".85"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.075">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".70"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.075">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".55"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.075">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".40"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.075">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".25"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.075">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".10"/>
+                </passive_effect>
+            </effect_group>
+
+            <!-- 等级 3: 每阶段 8.33% 伤害, 最高 50% -->
+            <effect_group>
+                <requirement name="ProgressionLevel" progression_name="perkKnifeCrazy" operation="Equals" value="3"/>
+                <requirements compare_type="or">
+                    <requirement name="HoldingItemHasTags" tags="perkKnife"/>
+                    <requirement name="HoldingItemHasTags" tags="perkDeepCuts"/>
+                </requirements>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.0833">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".85"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.0833">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".70"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.0833">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".55"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.0833">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".40"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.0833">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".25"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.0833">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".10"/>
+                </passive_effect>
+            </effect_group>
+
+            <!-- 等级 4: 每阶段 9.17% 伤害, 最高 55% -->
+            <effect_group>
+                <requirement name="ProgressionLevel" progression_name="perkKnifeCrazy" operation="Equals" value="4"/>
+                <requirements compare_type="or">
+                    <requirement name="HoldingItemHasTags" tags="perkKnife"/>
+                    <requirement name="HoldingItemHasTags" tags="perkDeepCuts"/>
+                </requirements>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.0917">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".85"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.0917">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".70"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.0917">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".55"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.0917">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".40"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.0917">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".25"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.0917">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".10"/>
+                </passive_effect>
+            </effect_group>
+
+            <!-- 等级 5: 每阶段 10% 伤害, 最高 60% -->
+            <effect_group>
+                <requirement name="ProgressionLevel" progression_name="perkKnifeCrazy" operation="Equals" value="5"/>
+                <requirements compare_type="or">
+                    <requirement name="HoldingItemHasTags" tags="perkKnife"/>
+                    <requirement name="HoldingItemHasTags" tags="perkDeepCuts"/>
+                </requirements>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.1">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".85"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.1">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".70"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.1">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".55"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.1">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".40"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.1">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".25"/>
+                </passive_effect>
+                <passive_effect name="DamageModifier" operation="perc_add" value="0.1">
+                    <requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value=".10"/>
+                </passive_effect>
+            </effect_group>
+
+            <effect_group>
+                <effect_description level="1" desc_key="perkKnifeCrazyRank1Desc" long_desc_key="perkKnifeCrazyRank1LongDesc"/>
+                <effect_description level="2" desc_key="perkKnifeCrazyRank2Desc" long_desc_key="perkKnifeCrazyRank2LongDesc"/>
+                <effect_description level="3" desc_key="perkKnifeCrazyRank3Desc" long_desc_key="perkKnifeCrazyRank3LongDesc"/>
+                <effect_description level="4" desc_key="perkKnifeCrazyRank4Desc" long_desc_key="perkKnifeCrazyRank4LongDesc"/>
+                <effect_description level="5" desc_key="perkKnifeCrazyRank5Desc" long_desc_key="perkKnifeCrazyRank5LongDesc"/>
+            </effect_group>
+        </perk>
+
+        <!-- 技能: 粉碎打击 -->
+        <perk name="perkArmorBreaker" parent="skillStrengthCombat" max_level="5" skill_point_cost="2" cost_multiplier_per_level="1" name_key="perkArmorBreakerName" desc_key="perkArmorBreakerDesc" icon="ui_game_symbol_destruction2">
+
+            <!-- 核心逻辑：只有学习了此技能，以下所有效果才会生效 -->
+            <effect_group>
+                <requirement name="ProgressionLevel" progression_name="perkArmorBreaker" operation="GTE" value="1"/>
+
+                <!-- 学习技能后，或冷却结束后，自动给予“准备就绪”Buff -->
+                <triggered_effect trigger="onSelfProgressionUpdate" action="AddBuff" buff="buffArmorBreakerReady">
+                    <requirement name="!HasBuff" buff="buffArmorBreakerReady"/>
+                    <requirement name="!HasBuff" buff="buffArmorBreakerCooldown"/>
+                </triggered_effect>
+
+                <!-- 攻击命中时，移除“准备就绪”并施加“冷却中”Buff -->
+                <triggered_effect trigger="onSelfAttackedOther" action="RemoveBuff" buff="buffArmorBreakerReady">
+                    <requirement name="HasBuff" buff="buffArmorBreakerReady"/>
+                    <requirement name="IsAlive" target="other"/>
+                    <requirement name="EntityTagCompare" target="other" tags="zombie,animal,player"/>
+                </triggered_effect>
+                <triggered_effect trigger="onSelfAttackedOther" action="AddBuff" buff="buffArmorBreakerCooldown">
+                    <requirement name="HasBuff" buff="buffArmorBreakerReady"/>
+                    <requirement name="IsAlive" target="other"/>
+                    <requirement name="EntityTagCompare" target="other" tags="zombie,animal,player"/>
+                </triggered_effect>
+
+                <!-- 等级1效果: 施加30%破甲Debuff，并设置60秒冷却时间 -->
+                <triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar=".armorBreakerCooldownTime" operation="set" value="60">
+                    <requirement name="ProgressionLevel" progression_name="perkArmorBreaker" operation="Equals" value="1"/>
+                    <requirement name="HasBuff" buff="buffArmorBreakerReady"/>
+                </triggered_effect>
+                <triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffArmorShredded_L1">
+                    <requirement name="ProgressionLevel" progression_name="perkArmorBreaker" operation="Equals" value="1"/>
+                    <requirement name="HasBuff" buff="buffArmorBreakerReady"/>
+                    <requirement name="IsAlive" target="other"/>
+                </triggered_effect>
+
+                <!-- 等级2效果: 施加40%破甲Debuff，并设置55秒冷却时间 -->
+                <triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar=".armorBreakerCooldownTime" operation="set" value="55">
+                    <requirement name="ProgressionLevel" progression_name="perkArmorBreaker" operation="Equals" value="2"/>
+                    <requirement name="HasBuff" buff="buffArmorBreakerReady"/>
+                </triggered_effect>
+                <triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffArmorShredded_L2">
+                    <requirement name="ProgressionLevel" progression_name="perkArmorBreaker" operation="Equals" value="2"/>
+                    <requirement name="HasBuff" buff="buffArmorBreakerReady"/>
+                    <requirement name="IsAlive" target="other"/>
+                </triggered_effect>
+
+                <!-- 等级3效果: 施加50%破甲Debuff，并设置49秒冷却时间 -->
+                <triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar=".armorBreakerCooldownTime" operation="set" value="49">
+                    <requirement name="ProgressionLevel" progression_name="perkArmorBreaker" operation="Equals" value="3"/>
+                    <requirement name="HasBuff" buff="buffArmorBreakerReady"/>
+                </triggered_effect>
+                <triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffArmorShredded_L3">
+                    <requirement name="ProgressionLevel" progression_name="perkArmorBreaker" operation="Equals" value="3"/>
+                    <requirement name="HasBuff" buff="buffArmorBreakerReady"/>
+                    <requirement name="IsAlive" target="other"/>
+                </triggered_effect>
+
+                <!-- 等级4效果: 施加60%破甲Debuff，并设置42秒冷却时间 -->
+                <triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar=".armorBreakerCooldownTime" operation="set" value="42">
+                    <requirement name="ProgressionLevel" progression_name="perkArmorBreaker" operation="Equals" value="4"/>
+                    <requirement name="HasBuff" buff="buffArmorBreakerReady"/>
+                </triggered_effect>
+                <triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffArmorShredded_L4">
+                    <requirement name="ProgressionLevel" progression_name="perkArmorBreaker" operation="Equals" value="4"/>
+                    <requirement name="HasBuff" buff="buffArmorBreakerReady"/>
+                    <requirement name="IsAlive" target="other"/>
+                </triggered_effect>
+
+                <!-- 等级5效果: 施加70%破甲Debuff，并设置34秒冷却时间 -->
+                <triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar=".armorBreakerCooldownTime" operation="set" value="34">
+                    <requirement name="ProgressionLevel" progression_name="perkArmorBreaker" operation="Equals" value="5"/>
+                    <requirement name="HasBuff" buff="buffArmorBreakerReady"/>
+                </triggered_effect>
+                <triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffArmorShredded_L5">
+                    <requirement name="ProgressionLevel" progression_name="perkArmorBreaker" operation="Equals" value="5"/>
+                    <requirement name="HasBuff" buff="buffArmorBreakerReady"/>
+                    <requirement name="IsAlive" target="other"/>
+                </triggered_effect>
+
+                <effect_description level="1" desc_key="perkArmorBreakerRank1Desc" long_desc_key="perkArmorBreakerRank1LongDesc"/>
+                <effect_description level="2" desc_key="perkArmorBreakerRank2Desc" long_desc_key="perkArmorBreakerRank2LongDesc"/>
+                <effect_description level="3" desc_key="perkArmorBreakerRank3Desc" long_desc_key="perkArmorBreakerRank3LongDesc"/>
+                <effect_description level="4" desc_key="perkArmorBreakerRank4Desc" long_desc_key="perkArmorBreakerRank4LongDesc"/>
+                <effect_description level="5" desc_key="perkArmorBreakerRank5Desc" long_desc_key="perkArmorBreakerRank5LongDesc"/>
+            </effect_group>
+        </perk>
+
+    </append>
+</config>
