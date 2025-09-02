@@ -183,7 +183,7 @@
         </perk>
 
         <!-- 技能: 粉碎打击 -->
-        <perk name="perkArmorBreaker" parent="skillStrengthCombat" max_level="5" skill_point_cost="2" cost_multiplier_per_level="1" name_key="perkArmorBreakerName" desc_key="perkArmorBreakerDesc" icon="ui_game_symbol_destruction2">
+        <perk name="perkArmorBreaker" parent="skillStrengthCombat" max_level="5" skill_point_cost="1" cost_multiplier_per_level="2" name_key="perkArmorBreakerName" desc_key="perkArmorBreakerDesc" icon="ui_game_symbol_destruction2">
 
             <!-- 核心逻辑：只有学习了此技能，以下所有效果才会生效 -->
             <effect_group>
