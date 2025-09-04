@@ -6,8 +6,6 @@
             <stack_type value="replace"/>
             <!-- 修改：持续时间变为3秒 -->
             <duration value="3"/>
-            <display_value value="playerMarkCounter"/>
-            <display_value_key value="buffMarkOfDeathTrackerValue"/>
 
             <!-- 步骤1: 通用的叠层逻辑 -->
             <effect_group>
@@ -24,6 +22,8 @@
                 <triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="playerMarkCounter" operation="set" value="1">
                     <requirement name="CVarCompare" cvar="playerMarkCounter" operation="Equals" value="0"/>
                 </triggered_effect>
+                <triggered_effect trigger="onSelfBuffStart" action="RefreshBuffDisplay" buff="buffMarkOfDeathTracker"/>
+                <triggered_effect trigger="onSelfBuffStack" action="RefreshBuffDisplay" buff="buffMarkOfDeathTracker"/>
             </effect_group>
 
             <!-- 步骤2: 根据技能等级，选择不同的伤害倍率进行计算 -->

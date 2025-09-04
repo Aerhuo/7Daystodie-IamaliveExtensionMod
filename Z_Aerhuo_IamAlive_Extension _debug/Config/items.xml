@@ -1,18 +1,31 @@
 <configs>
     <append xpath="/items">
-        <item name="debugStick">
+        <item name="cvarLinkDebugger">
             <property name="Extends" value="meleeWpnClubT0WoodenClub"/>
             <property name="DisplayType" value="melee"/>
             <property name="CreativeMode" value="Dev"/>
+            <property name="CustomIcon" value="meleeWpnClubT0WoodenClub"/>
+            <property class="Action0">
+                <property name="Class" value="DynamicMelee"/>
+            </property>
             <property class="Action1">
                 <property name="Class" value="DynamicMelee"/>
-                <property name="Damage_type" value="Slashing"/>
-                <property name="Sphere" value=".1"/>
-                <property name="Tool_category" value="Debug"/>
             </property>
-            <effect_group name="Debug Stick Actions">
-                <!-- 当你用这个物品右键（副攻击）击中一个实体时 -->
-                <triggered_effect trigger="onSelfSecondaryActionRayHit" action="ShowToolTipSDX, SCore" target="self" message="敌人层数: {cvar(other,$markOfDeathCounter)} | 总增伤: {cvar(other,$totalMarkDamage)}%" />
+            <effect_group name="CVarLink Comprehensive Debugger">
+                <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" target="self" cvar="debugPower" operation="set" value="77"/>
+
+                <!-- 左键测试: 常量value & Target完整性 -->
+                <triggered_effect trigger="onSelfPrimaryActionRayHit" action="ModifyCVarExpanded" target="other" cvar="testCounter_Constant" operation="add" value="10" />
+                <triggered_effect trigger="onSelfPrimaryActionRayHit" action="LogMessage" message="--- 左键 (常量 &amp; Target验证) ---" />
+                <triggered_effect trigger="onSelfPrimaryActionRayHit" action="CVarLogValue" target="other" cvar="testCounter_Constant" message="[验证] 目标(other)身上的值(攻击前):" />
+                <triggered_effect trigger="onSelfPrimaryActionRayHit" action="CVarLogValue" target="self" cvar="testCounter_Constant" message="[验证] 自己(self)身上的同名值:" />
+
+                <!-- 右键测试: 变量@value & Target完整性 -->
+                <triggered_effect trigger="onSelfSecondaryActionRayHit" action="ModifyCVarExpanded" target="other" cvar="testCounter_Variable" operation="add" value="@debugPower" />
+                <triggered_effect trigger="onSelfSecondaryActionRayHit" action="LogMessage" message="--- 右键 (变量 &amp; Target验证) ---" />
+                <triggered_effect trigger="onSelfSecondaryActionRayHit" action="CVarLogValue" target="self" cvar="debugPower" message="[验证] 源值(self):" />
+                <triggered_effect trigger="onSelfSecondaryActionRayHit" action="CVarLogValue" target="other" cvar="testCounter_Variable" message="[验证] 目标(other)身上的值(攻击前):" />
+                <triggered_effect trigger="onSelfSecondaryActionRayHit" action="CVarLogValue" target="self" cvar="testCounter_Variable" message="[验证] 自己(self)身上的同名值:" />
             </effect_group>
         </item>
     </append>
