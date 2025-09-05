@@ -24,6 +24,8 @@
                 <triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="playerMarkCounter" operation="set" value="1">
                     <requirement name="CVarCompare" cvar="playerMarkCounter" operation="Equals" value="0"/>
                 </triggered_effect>
+                <triggered_effect trigger="onSelfBuffStart" action="RefreshBuffDisplay" buff="buffMarkOfDeathTracker"/>
+                <triggered_effect trigger="onSelfBuffStack" action="RefreshBuffDisplay" buff="buffMarkOfDeathTracker"/>
             </effect_group>
 
             <!-- 步骤2: 根据技能等级，选择不同的伤害倍率进行计算 -->
