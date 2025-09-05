@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+    <Name value="AerosModdingKit" />
+    <DisplayName value="Aerhuo's Modding Kit" />
+    <Version value="1.0.0" />
+    <Description value="A utility mod that provides a collection of powerful new actions for XML modders." />
+    <Author value="Aerhuo" />
+    <Website value="" />
+</xml>

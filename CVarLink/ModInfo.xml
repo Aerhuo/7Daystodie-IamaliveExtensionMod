@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<xml>
-    <Name value="CVarLink" />
-    <DisplayName value="CVarLink by Aerhuo" />
-    <Version value="1.0.0" />
-    <Description value="Adds the MinEventActionModifyCVarFromCVar action." />
-    <Author value="Aerhuo" />
-    <Website value="" />
-</xml>
