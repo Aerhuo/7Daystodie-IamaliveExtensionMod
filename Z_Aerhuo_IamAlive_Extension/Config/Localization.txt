@@ -49,7 +49,3 @@ buffArmorBreakerReadyName,,,,[00ff00]粉碎打击：就绪[-]
 buffArmorBreakerReadyDesc,,,,你的下一次攻击将引发[c82222]结构性崩坏[-]。
 buffArmorBreakerCooldownName,,,,[999999]粉碎打击：蓄力中[-]
 buffArmorBreakerCooldownDesc,,,,你正在为下一次毁灭性的打击积蓄力量。
-buffProteinHighDesc,,,,[FF9935]蛋白质偏高！[-] 消化系统出现负担。\n[FF0000]水和食物的消耗速度+10%[-]\n\n[00EE00]但你依然非常强壮 (LV4增益)：\n最大生命值+25\n最大体力值+25\n负重能力+8
-buffProteinHigh01Desc,,,,[FF7D40]蛋白质过高！[-] 消化系统压力很大。\n[FF0000]水和食物的消耗速度+35%[-]\n\n[00EE00]但你还保留着一些力量 (LV2增益)：\n最大生命值+15\n最大体力值+15\n负重能力+4
-buffCarbonWaterHighDesc,,,,[FF9935]轻度高血压！[-] 你的身体感到了负担。\n[FF0000]最大体力/生命值-20[-]\n\n[00EE00]但你依然精力充沛 (LV4增益)：\n全部伤害+20% \n攻击速度+20% \n装弹速度+20%\n移动速度+20%
-buffCarbonWaterHigh01Desc,,,,[FF7D40]中度高血压！[-] 身体状态明显下滑。\n[FF0000]最大体力/生命值-50[-]\n\n[00EE00]但你还保留着一些活力 (LV2增益)：\n全部伤害+10% \n攻击速度+10% \n装弹速度+10%\n移动速度+10%
