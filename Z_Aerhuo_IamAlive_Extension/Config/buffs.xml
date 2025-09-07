@@ -6,6 +6,8 @@
             <stack_type value="replace"/>
             <!-- 修改：持续时间变为3秒 -->
             <duration value="3"/>
+            <display_value value="playerMarkCounter"/>
+            <display_value_key value="buffMarkOfDeathTrackerValue"/>
 
             <!-- 步骤1: 通用的叠层逻辑 -->
             <effect_group>
