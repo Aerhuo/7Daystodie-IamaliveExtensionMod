@@ -286,4 +286,60 @@
         </perk>
 
     </append>
+
+        <!-- ==================================================================================== -->
+    <!-- ========================= 为游戏添加回“跑酷”技能 START ========================= -->
+    <!-- ==================================================================================== -->
+
+    <!-- 第一步: 在“体质”(attFortitude)属性下，创建一个新的名为“运动能力”的技能子分类 -->
+    <!-- 这样做是为了让“跑酷”在技能树中有自己的专属位置，显得更加专业和不突兀 -->
+    <append xpath="/progression/skills">
+        <skill name="skillFortitudeAthletics" parent="attFortitude" name_key="运动能力" desc_key="提升你的移动和环境适应能力" icon="ui_game_symbol_parkour">
+            <effect_group/>
+        </skill>
+    </append>
+
+    <!-- 第二步: 添加“跑酷”技能本身，并将其父级设置为我们刚刚创建的“运动能力”分类 -->
+    <append xpath="/progression/perks">
+        <perk name="perkParkour" parent="skillFortitudeAthletics" name_key="perkParkourName" desc_key="perkParkourDesc" icon="ui_game_symbol_parkour" max_level="4">
+            <!-- 
+			将学习跑酷的前置条件，修改为依赖于“体质”(attFortitude)属性的等级。
+			这完全符合新模组的技能体系。
+		-->
+            <level_requirements level="1">
+                <requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="1" desc_key="需要[EE82EE]体质[00ee00]1[FFFFFF]级"/>
+            </level_requirements>
+            <level_requirements level="2">
+                <requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="4" desc_key="需要[EE82EE]体质[00ee00]4[FFFFFF]级"/>
+            </level_requirements>
+            <level_requirements level="3">
+                <requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="6" desc_key="需要[EE82EE]体质[00ee00]6[FFFFFF]级"/>
+            </level_requirements>
+            <level_requirements level="4">
+                <requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="8" desc_key="需要[EE82EE]体质[00ee00]8[FFFFFF]级"/>
+            </level_requirements>
+
+            <!-- 
+			完整保留原版跑酷技能的所有核心效果：
+			- 减少跳跃时的耐力消耗
+			- 增加跳跃高度
+			- 减少跌落伤害 (此效果在buffs.xml中的buffPlayerFallingDamage里定义，通过检测perkParkour等级实现，所以无需在此处写出)
+			- 安全地跳过更高的高度
+		-->
+            <effect_group>
+                <passive_effect name="JumpStrength" operation="perc_add" level="2,3,4" value=".39,.39,.75"/>
+                <passive_effect name="StaminaLoss" operation="perc_add" level="1,4" value="-.1,-.4" tags="jumping"/>
+
+                <effect_description level="1" desc_key="perkParkourRank1Desc" long_desc_key="perkParkourRank1LongDesc"/>
+                <effect_description level="2" desc_key="perkParkourRank2Desc" long_desc_key="perkParkourRank2LongDesc"/>
+                <effect_description level="3" desc_key="perkParkourRank3Desc" long_desc_key="perkParkourRank3LongDesc"/>
+                <effect_description level="4" desc_key="perkParkourRank4Desc" long_desc_key="perkParkourRank4LongDesc"/>
+            </effect_group>
+        </perk>
+    </append>
+
+    <!-- ================================================================================== -->
+    <!-- ========================= 为游戏添加回“跑酷”技能 END ========================= -->
+    <!-- ================================================================================== -->
+    
 </config>
